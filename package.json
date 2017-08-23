@@ -10,6 +10,7 @@
   "scripts": {
     "heroku-postbuild": "webpack -p",
     "start": "node server/index.js",
+    "test": "jest",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "load-seeds": "mysql -u root < db/seeds.sql",
@@ -54,6 +55,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.7.2",
     "chai": "^4.1.1",
+<<<<<<< HEAD
     "chai-http": "^3.0.0",
     "enzyme": "^2.9.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
@@ -62,6 +64,12 @@
     "jest": "^20.0.4",
 =======
 >>>>>>> travis tutorial
+=======
+    "enzyme": "^2.9.1",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "grunt": "^1.0.1",
+    "jest": "^20.0.4",
+>>>>>>> remove tutorials
     "jshint": "^2.9.5",
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.2.0",
