@@ -3,9 +3,7 @@ const parseString = require('xml2js').parseString;
 const CryptoJS = require('crypto-js');
 const request = require('request');
 
-if (!process.env.HEROKU_ENV) {
-  const cred = require('../config.js');
-}
+const cred = process.env.HEROKU_ENV || require('../config.js');
 
 module.exports = (req, res) => {
   if (req.body.query.trim() === '') {
