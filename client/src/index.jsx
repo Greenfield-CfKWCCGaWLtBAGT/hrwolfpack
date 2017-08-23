@@ -42,3 +42,5 @@ ReactDOM.render((
     <App />
   </BrowserRouter>
 ), document.getElementById('app'));
+
+export default App;
