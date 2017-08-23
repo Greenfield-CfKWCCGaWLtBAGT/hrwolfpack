@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize');
+var creds = require('../config.js');
 
 var pg = require('pg');
 pg.defaults.ssl = true;
@@ -17,9 +18,21 @@ pg.defaults.ssl = true;
 //         timestamps: false
 //     }
 // });
-
-var db_url = process.env.DATABASE_URL || 'postgres://svntauetywrtss:55f43a82d494c48a4e4fa78280e969f4ae787e010d673b173ac1b9c8edced9e0@ec2-184-73-249-56.compute-1.amazonaws.com:5432/dbnte43httuu78';
-var db = new Sequelize(db_url);
+var db_url;
+var db;
+if (process.env.DATABASE_URL) {
+  db_url = process.env.DATABASE_URL
+  db = new Sequelize(db_url);
+} else {
+  db = new Sequelize(creds.db_name, creds.db_username, creds.db_password, {
+    host: creds.db_host,
+    dialect: 'mysql',
+    logging: false,
+    define: {
+      timestamps: false
+    }
+  });
+}
 
 //test connection
 db
