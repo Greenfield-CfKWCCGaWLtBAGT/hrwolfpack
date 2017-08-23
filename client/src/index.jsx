@@ -13,3 +13,4 @@ ReactDOM.render((
   </BrowserRouter>
 ), document.getElementById('app'));
 
+export default App;
