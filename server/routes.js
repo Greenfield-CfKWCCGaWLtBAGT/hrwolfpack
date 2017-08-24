@@ -31,6 +31,9 @@ router.post('/listingStatus', (req, res) => {
 	});
 });
 
+router.get('/oneListing', (req, res) => {
+	console.log(req);
+})
 
 router.get('/newListings', (req, res) => {
 	var notInitListingArray;
