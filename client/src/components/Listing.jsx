@@ -244,7 +244,7 @@ class Listing extends React.Component {
                   </span></p>
                   <div>
                     <Button bsStyle="primary" onClick={this.showModal}>More Info</Button>
-                    <Router><Link to={`/userlistings/${this.props.listingInfo.id}`}><Button bsStyle="primary">Listing Page</Button></Link></Router>
+                    <Link to={`/userlistings/${this.props.listingInfo.id}`}><Button bsStyle="primary">Listing Page</Button></Link>
                     <p style={{fontStyle: 'italic', color: 'grey'}}>{footer}</p>
                   </div>
                 </Thumbnail>
