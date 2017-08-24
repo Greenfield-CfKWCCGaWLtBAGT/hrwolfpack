@@ -31,6 +31,18 @@ router.post('/listingStatus', (req, res) => {
 	});
 });
 
+router.get('/listing', (req, res) => {
+	db.Listing.findAll({
+		where: {id: req.query.id}
+	})
+	.then(results => {
+		console.log('great success! ', results[0].dataValues);
+		res.send(results);
+	})
+	.catch(err => {
+		console.log('Error: ', err);
+	})
+})
 
 router.get('/newListings', (req, res) => {
 	var notInitListingArray;

@@ -31,6 +31,10 @@ var Header = (props) => (
 						<Link to="/initiated">Listings You Initiated</Link>
 					</NavItem>
 
+					<NavItem eventKey={2} href="#">
+						<Link to="/userlistings">All Your Listings</Link>
+					</NavItem>
+
 					<NavItem>
 						<Link to="/testimonials">Reviews</Link>
 					</NavItem>
