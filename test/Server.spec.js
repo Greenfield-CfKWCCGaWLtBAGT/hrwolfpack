@@ -1,11 +1,22 @@
-// var expect = require('chai').expect;
-// var request = require('request');
-// var db = require('../db');
-// var chai = require('chai');
-// var chaiHTTP = require('chai-http');
-// var should = chai.should();
-// var server = require('../server/index.js');
+var expect = require('chai').expect;
+var request = require('request');
+var db = require('../db');
+var chai = require('chai');
+var chaiHTTP = require('chai-http');
+var should = chai.should();
+var server = require('../server/index.js');
 
+// chai.use(chaiHTTP);
+
+// describe('server', () => {
+//   before(() => {
+//     server.listen(3000);
+//   });
+
+//   after(() => {
+//     server.close();
+//   });
+// })
 
 // describe('Create a new listing', function() {
 
