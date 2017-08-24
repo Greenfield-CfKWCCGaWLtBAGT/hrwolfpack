@@ -18,7 +18,7 @@ describe('Persistent Users', () => {
 
     let tablename = 'users';
 
-    //dbConnection.query('truncate ' + tablename, done);
+    dbConnection.query('truncate ' + tablename, done);
   });
 
   afterEach(() => {
@@ -26,11 +26,28 @@ describe('Persistent Users', () => {
   });
 
   it('Should insert new users into the database', () => {
-    db.User.create({
+    return db.User.create({
       username: 'dennis', 
       password: 'rodman'
-    });
-    //.then(())
-  });
-
+    })
+    .then(() => {
+      console.log('user created');
+      db.User.findOne({
+        where: {
+          username: 'dennis',
+          password: 'rodman'
+        },
+        raw: true
+      })
+    .then((result) => {
+      console.log(result);
+      expect(result.username).to.equal('dennis');
+      expect(result.password).to.equal('rodman');
+    })
+    .catch((err) => {
+      console.log('Error: ', err);
+    })
+    })
+  })
+  
 });
