@@ -23,10 +23,17 @@ export default class ListingPage extends React.Component {
 
   getListing() {
     let context = this;
-    $.get('/listing', {id: this.state.listingId}, results => {
-      context.setState({
-        listing: results
-      });
+    $.ajax({
+      type: 'GET',
+      data: {
+        id: context.state.listingId
+      },
+      url: '/listing',
+      success: (result) => {
+        context.setState({
+          listing: result
+        })
+      }
     });
   }
 
