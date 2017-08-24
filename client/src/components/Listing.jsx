@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { ListGroup, Button, Modal, Col, Thumbnail, Grid, Row, Panel,  } from 'react-bootstrap';
-import { Link, Router } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
 
 var boxStyle = {
   boxShadow: '3px 3px 5px 6px grey',
@@ -244,7 +244,7 @@ class Listing extends React.Component {
                   </span></p>
                   <div>
                     <Button bsStyle="primary" onClick={this.showModal}>More Info</Button>
-                    <Router><Link to={`/userlistings/${this.props.listingInfo.id}`}><Button bsStyle="primary">Listing Page</Button></Link></Router>
+                    <Link to={`/userlistings/${this.props.listingInfo.id}`}><Button bsStyle="primary">Listing Page</Button></Link>
                     <p style={{fontStyle: 'italic', color: 'grey'}}>{footer}</p>
                   </div>
                 </Thumbnail>
