@@ -6,16 +6,14 @@ var chaiHTTP = require('chai-http');
 var should = chai.should();
 var server = require('../server/index.js');
 
-// chai.use(chaiHTTP);
+chai.use(chaiHTTP);
 
 // describe('server', () => {
-//   before(() => {
-//     server.listen(3000);
-//   });
-
-//   after(() => {
-//     server.close();
-//   });
+//   describe('GET /', () => {
+//     it('should get the index.html', (done) => {
+      
+//     })
+//   })
 // })
 
 // describe('Create a new listing', function() {
