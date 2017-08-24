@@ -22,7 +22,7 @@ let listingInfo = {
 };
 
 describe('<Listing />', () => {
-  it('calls componentDidMount', () => {
+  xit('calls componentDidMount', () => {
   	spy(Listing.prototype, 'componentDidMount');
   	const wrapper = mount(<Listing listingInfo={listingInfo} socket={socket}/>);
     expect(Listing.prototype.componentDidMount.calledOnce).to.equal(true);
