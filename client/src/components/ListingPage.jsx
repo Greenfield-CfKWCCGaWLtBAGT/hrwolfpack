@@ -1,6 +1,7 @@
 import React from 'react';
-import { ListGroup, Button, Modal, Col, Thumbnail, Grid, Row, Panel,  } from 'react-bootstrap';
+import { ListGroup, Button, Modal, Col, Thumbnail, Grid, Row, Panel } from 'react-bootstrap';
 import $ from 'jquery';
+import Listing from './Listing.jsx';
 
 var divStyle = {
   margin: '100px 50px 50px 50px'
@@ -11,17 +12,11 @@ export default class ListingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // does this even need to be a class?
-      listingId: this.props.match.params.id,
-      listing: null
+      listingId: this.props.match.params.id
     };
   }
 
-  componentWillMount() {
-    this.getListing();
-  }
-
-  getListing() {
+  componentDidMount() {
     let context = this;
     $.ajax({
       type: 'GET',
@@ -38,15 +33,25 @@ export default class ListingPage extends React.Component {
   }
 
   render() {
-    return (
-      <div>
+    if (!this.state.listing) {
+      return (
+        <div> Loading... </div>
+      )
+    } else {
+      return (
         <Grid>
           <Row>
-            <Col>Chat Goes Here</Col>
+            <Listing
+              listingInfo={this.state.listing}
+              userId={this.props.userId}
+              socket={this.props.socket}
+              history={this.props.history}
+            />
           </Row>
         </Grid>
-      </div>
-    )
+      )
+    }
+
   }
 
 }

@@ -37,7 +37,7 @@ router.get('/listing', (req, res) => {
 	})
 	.then(results => {
 		console.log('great success! ', results[0].dataValues);
-		res.send(results);
+		res.send(results[0].dataValues);
 	})
 	.catch(err => {
 		console.log('Error: ', err);
