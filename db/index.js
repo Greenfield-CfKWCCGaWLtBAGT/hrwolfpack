@@ -1,29 +1,16 @@
 var Sequelize = require('sequelize');
-var creds = require('../config.js');
 
 var pg = require('pg');
 pg.defaults.ssl = true;
 
-//create 'wolfpack' database
-// var db_name = cred.db_name || 'wolfpack';
-// var db_username = cred.db_username || 'root';
-// var db_password = cred.db_password || '';
-// var db_host = cred.db_host || 'localhost';
 
-// var db = new Sequelize(db_name, db_username, db_password, {
-// 	host: db_host,
-// 	dialect: 'mysql',
-// 	logging: false,
-// 	define: {
-//         timestamps: false
-//     }
-// });
 var db_url;
 var db;
 if (process.env.DATABASE_URL) {
   db_url = process.env.DATABASE_URL
   db = new Sequelize(db_url);
 } else {
+  var creds = require('../config.js');
   db = new Sequelize(creds.db_name, creds.db_username, creds.db_password, {
     host: creds.db_host,
     dialect: 'mysql',
