@@ -73,6 +73,14 @@ var io = socket(server, {secure: true});
 io.on('connection', (socket) => {
 	console.log('Make socket connection', socket.id);
 
+	socket.on('clientMessage', (data) => {
+		//save message to database
+
+		//emit to all client sockets
+		io.sockets.emit('serverMessage', data);
+
+	});
+
 	socket.on('newListing', (data) => {
 		db.Listing.create({
 			name: data.name,

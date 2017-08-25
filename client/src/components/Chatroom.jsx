@@ -1,9 +1,9 @@
 //require('.../client/dist/styles/styles.css');
 
 import React from 'react';
-import io from 'socket.io-client';
 import Messages from './Messages.jsx';
 import ChatInput from './ChatInput.jsx';
+
 
 export default class Chatroom extends React.Component {
   constructor(props) {
@@ -16,17 +16,10 @@ export default class Chatroom extends React.Component {
   }
 
   componentDidMount() {
-    makeClientSocketConnection();
-  }
-
-  makeClientSocketConnection() {
-    //connect to server
-    let socket = io.connect('http://localhost:3000');
-    //listen for messages from server
-    socket.on('server:message', (message) => {
-    console.log(message);
-    socket.emit('my other event', { my: 'data' });
-  });
+    //receive message from server and render to dom
+    this.props.socket.on('serverMessage', (message) => {
+      console.log(message);
+    });
   }
 
   handleSend(message) {
@@ -36,7 +29,7 @@ export default class Chatroom extends React.Component {
 
     }
     //emit message to server
-    socket.emit('client:message', messageObject);
+    this.props.socket.emit('clientMessage', messageObject);
   }
 
   saveMessage() {

@@ -25,7 +25,7 @@ export default class ChatInput extends React.Component {
 
   handleTextChange(event) {
     this.setState({
-      chatInput: event.target.value;
+      chatInput: event.target.value
     })
 
   }
