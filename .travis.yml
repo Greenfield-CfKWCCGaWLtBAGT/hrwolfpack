@@ -3,6 +3,15 @@ language: node_js
 node_js:
   - 8.1.4
 
+before_install:
+  - mysql -e ‘CREATE DATABASE wolfpack;’
+
+before_script:
+  - webpack -d
+
+script:
+  - npm test
+
 cache:
   directories:
     - “node_modules”

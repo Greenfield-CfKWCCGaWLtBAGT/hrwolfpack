@@ -7,14 +7,6 @@ pg.defaults.ssl = true;
 var db_url;
 var db;
 
-if (process.env.TRAVIS_ENV) {
-  console.log('-----------------------------------------------',process.env.TRAVIS_ENV);
-}
-
-if (process.env.HEROKU_ENV) {
-  console.log('-----------------------------------------------',process.env.HEROKU_ENV);
-}
-
 
 if (process.env.TRAVIS_ENV || process.env.HEROKU_ENV) {
   db_url = process.env.DATABASE_URL
