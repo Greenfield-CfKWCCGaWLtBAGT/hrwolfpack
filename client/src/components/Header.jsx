@@ -41,8 +41,8 @@ var Header = (props) => (
 
 			</Nav>
 			<Nav pullRight>
-				<NavItem eventKey={1} href="/logout">
-					<form action='/logout' method="GET"><button type="submit">Logout</button></form>
+				<NavItem eventKey={1} href="#">
+					<a href='/logout'>Logout</a>
 				</NavItem>
 			</Nav>
 		</Navbar.Collapse>
