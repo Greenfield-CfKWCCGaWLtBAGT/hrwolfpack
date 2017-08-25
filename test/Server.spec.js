@@ -3,7 +3,8 @@ let chaiHttp = require('chai-http');
 let app = require('../server/index.js');
 
 let request = require('supertest');
-let server = request.agent('http://localhost:3000');
+let url = process.env || 'http://localhost:3000'
+let server = request.agent(url);
 
 let expect = chai.expect;
 
