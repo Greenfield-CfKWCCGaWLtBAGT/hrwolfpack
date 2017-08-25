@@ -1,38 +1,75 @@
 const mysql = require('mysql');
 const request = require('request');
 const expect = require('chai').expect;
-const cred = require('../config');
 const server = require('../server/index.js');
 const db = require('../db/index.js');
+const pg = require('pg');
+pg.defaults.ssl = true;
+
+describe('Tables', () => {
+
+  describe('Users', () => {
+    it('Should exist', () => {
+      expect(db.User).to.exist;
+    });
+  });
+
+  describe('Listings', () => {
+    it('Should exist', () => {
+      expect(db.Listing).to.exist;
+    });
+  });
+
+  describe('UserListings', () => {
+    it('Should exist', () => {
+      expect(db.UserListings).to.exist;
+    })
+  })
+
+});
+
+describe('Persistent Listings', () => {
+  it('Should get listings from the database', () => {
+    db.Listing.findAll({
+      raw: true
+    })
+    .then((listings) => {
+      //console.log(listings);
+      expect(listings[0]).to.have.property('name');
+    })
+    .catch((err) => {
+      console.log('Error: ', err);
+    })
+  })
+
+});
 
 describe('Persistent Users', () => {
-  let dbConnection;
 
-  beforeEach((done) => {
-    dbConnection = mysql.createConnection({
-      user: cred.db_username,
-      password: cred.db_password,
-      database: cred.db_name
-    });
-    dbConnection.connect();
+  it('should get seeded users from the database', () => {
+    return db.User.findOne({
+      where: {
+        username: 'dylan',
+        password: '123d'
+      }
+    })
+    .then((user) => {
+      expect(user.username).to.equal('dylan');
+      expect(user.password).to.equal('123d');
+    })
+    .catch((err) => {
+      console.log('Error: ', err);
+    })
 
-    let tablename = 'users';
+  })
 
-    dbConnection.query('truncate ' + tablename, done);
-  });
-
-  afterEach(() => {
-    dbConnection.end();
-  });
-
-  it('Should insert new users into the database', () => {
+  it('should insert new users into the database', () => {
     return db.User.create({
       username: 'dennis', 
       password: 'rodman'
     })
-    .then(() => {
-      console.log('user created');
-      db.User.findOne({
+    .then((user) => {
+      return db.User.findOne({
         where: {
           username: 'dennis',
           password: 'rodman'
@@ -40,14 +77,54 @@ describe('Persistent Users', () => {
         raw: true
       })
     .then((result) => {
-      console.log(result);
       expect(result.username).to.equal('dennis');
       expect(result.password).to.equal('rodman');
+      return db.User.destroy({
+        where: {
+          username: 'dennis'
+        }
+      })
+    .then((rows) => {
+      //console.log('deleting rows: ', rows);
     })
     .catch((err) => {
       console.log('Error: ', err);
     })
     })
+    })
   })
-  
+
+  xit('Should not create duplicate users', () => {
+    return db.User.create({
+      username: 'anthony',
+      password: 'stephens'
+    })
+    .then((user) => {
+      return db.User.create({
+        username: 'anthony',
+        password: 'uranus'
+      })
+    .then((user) => {
+      return db.User.findAll({
+        where: {
+          username: 'anthony'
+        },
+        raw: true
+      })
+    .then((users) => {
+      console.log(users);
+      expect(users.length).to.equal(1);
+      return db.User.destroy({
+        where: {
+          username: 'anthony'
+        }
+      })
+    })
+    .catch((err) => {
+      console.log('Error: ', err);
+    })
+    })
+    })
+  })
+
 });
