@@ -1,4 +1,4 @@
-require('.../dist/styles/styles.css');
+//require('.../client/dist/styles/styles.css');
 
 import React from 'react';
 import io from 'socket.io-client';
@@ -26,15 +26,21 @@ export default class Chatroom extends React.Component {
   }
 
   handleSend(message) {
-    const message = {
+    const messageObject = {
       user: ,
-      message
+      message: ''
+
     }
     //emit message to server
     socket.emit('client:message', messageObject);
   }
 
   saveMessage() {
+    //append message to state
+    const messages = this.state.messages;
+    messages.push(message);
+    this.setState({ messages });
+    //save message to db
 
   }
 
