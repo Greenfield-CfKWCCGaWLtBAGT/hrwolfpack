@@ -43,15 +43,19 @@ export default class ListingPage extends React.Component {
       return (
         <Grid>
           <Row>
+            <Col md={8}>
             <Listing
               listingInfo={this.state.listing}
               userId={this.props.userId}
               socket={this.props.socket}
               history={this.props.history}
             />
+            </Col>
           </Row>
           <Row>
-            <Chatroom />
+            <Col md={4}>
+            <Chatroom userId={this.props.userId} socket={this.props.socket}/>
+            </Col>
           </Row>
         </Grid>
       )
