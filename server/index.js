@@ -54,6 +54,7 @@ app.post('/signup',
 );
 
 app.get('/logout', (req, res) => {
+	console.log('in logout');
   req.logout();
   res.redirect('/login');
 });
