@@ -3,12 +3,13 @@ var Sequelize = require('sequelize');
 var pg = require('pg');
 pg.defaults.ssl = true;
 
+var env = process.env.NODE_ENV || 'development';
 
 var db_url;
 var db;
 
 
-if (process.env.TRAVIS_ENV || process.env.HEROKU_ENV) {
+if (env === 'test' || process.env.HEROKU_ENV) {
   db_url = process.env.DATABASE_URL
   db = new Sequelize(db_url);
 } else {
