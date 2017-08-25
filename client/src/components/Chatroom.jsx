@@ -2,6 +2,8 @@
 
 import React from 'react';
 import io from 'socket.io-client';
+import Messages from './Messages.jsx';
+import ChatInput from './ChatInput.jsx';
 
 export default class Chatroom extends React.Component {
   constructor(props) {
@@ -9,6 +11,8 @@ export default class Chatroom extends React.Component {
     this.state = {
       messages: []
     }
+
+    this.handleSend = this.handleSend.bind(this);
   }
 
   componentDidMount() {
@@ -27,8 +31,8 @@ export default class Chatroom extends React.Component {
 
   handleSend(message) {
     const messageObject = {
-      user: ,
-      message: ''
+      // user:
+      // message: ''
 
     }
     //emit message to server
@@ -49,7 +53,7 @@ export default class Chatroom extends React.Component {
         <div className="container">
         <h3>Ferret Business Chat</h3>
         <Messages messages={this.state.messages} />
-        <ChatInput onSend={this.sendHandler} />
+        <ChatInput onSend={this.handleSend} />
       </div>
     )
 
