@@ -2,6 +2,9 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let app = require('../server/index.js');
 
+let request = require('supertest');
+let server = request.agent('http://localhost:3000');
+
 let expect = chai.expect;
 
 chai.use(chaiHttp);
@@ -25,22 +28,22 @@ describe('Server Index', () => {
         });
     });
     it ('should redirect to /login on bad input', (done) => {
-      chai.request(app)
-        .post('/login')
-        .send({ username: 'fake', password: 'user'  })
+      server.post('/login')
+        .send(  {username: 'fake', password: 'news'}  )
+        .expect(302)
+        .expect('Location', '/')
         .end((err, res) => {
-          expect(res).to.redirectTo('http://localhost:3000/login');
           done();
-        });
+        })
     });
     it ('should redirect to index on successful login', (done) => {
-      chai.request(app)
-        .post('/login')
-        .send({ user: 'karun', password: '123k' })
+      server.post('/login')
+        .send(  {username: 'karun', password: '123k'}  )
+        .expect(302)
+        .expect('Location', '/')
         .end((err, res) => {
-          expect(res).to.redirectTo('http://localhost:3000/');
           done();
-        });
+        })
     });
 
   });
@@ -60,6 +63,15 @@ describe('Server Index', () => {
           expect(res).to.be.html;
           done();
         });
+    });
+    it ('should redirect to index on successful signup', (done) => {
+      server.post('/login')
+        .send(  {username: 'new', password: 'user'}  )
+        .expect(302)
+        .expect('Location', '/')
+        .end((err, res) => {
+          done();
+        })
     });
   });
   describe('Logout Page', () => {
