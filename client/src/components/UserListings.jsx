@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import $ from 'jquery';
+
 import Listings from './Listings.jsx';
 
 var divStyle = {
@@ -34,6 +34,7 @@ export default class UserListings extends React.Component {
     return (
       <div style={divStyle}>
         <Listings
+          history={this.props.history}
           currentListings={this.state.allListings}
           userId={this.props.userId}
           socket={this.props.socket}
