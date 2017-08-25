@@ -1,7 +1,6 @@
 const mysql = require('mysql');
 const request = require('request');
 const expect = require('chai').expect;
-const server = require('../server/index.js');
 const db = require('../db/index.js');
 const pg = require('pg');
 pg.defaults.ssl = true;
