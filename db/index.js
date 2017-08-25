@@ -3,12 +3,17 @@ var Sequelize = require('sequelize');
 var pg = require('pg');
 pg.defaults.ssl = true;
 
+var env = process.env.NODE_ENV || 'development';
 
 var db_url;
 var db;
-if (process.env.DATABASE_URL) {
-  db_url = process.env.DATABASE_URL
-  db = new Sequelize(db_url);
+var cloud_db = 'postgres://jqahiwyjqaactz:83076ed0161f024949784ebfa535af464ed1700aad120329dfdaec813a8825d0@ec2-54-163-227-202.compute-1.amazonaws.com:5432/dakqlsj082mah5';
+
+if (env === 'test' || env === 'production') {
+  db_url = cloud_db;
+  db = new Sequelize(db_url, {
+    dialect: 'mysql'
+  });
 } else {
   var creds = require('../config.js');
   db = new Sequelize(creds.db_name, creds.db_username, creds.db_password, {
@@ -75,59 +80,6 @@ User.sync()
 .then(() => {
   return UserListings.sync();
 });
-
-
-
-// UserListings.sync()
-// .then(() => {
-//   return Listing.sync();
-// })
-// .then(() => {
-//   return User.sync();
-// })
-// .then(() => User.create({username: 'dylan', password: '123d'}))
-// .then(() => User.create({username: 'clarence', password: '123c'}))
-// .then(() => User.create({username: 'kevin', password: '123k'}))
-// .then(() => User.create({username: 'jason', password: '123j'}))
-// .then(() => User.create({username: 'fred', password: '1234'}))
-// .then(() => User.create({username: 'tyler', password: '123t'}))
-// .then(() => {
-//   return UserListings.sync();
-// });
-// .then(() => Listing.create({
-//   name: '69 pack of shampoo',
-//   initializer: 1,
-//   price: 5.00,
-//   complete: true,
-//   location: '944 Market St, San Francisco, CA 94121',
-//   num_of_participants: 3
-// }))
-// .then(() => Listing.create({
-//   name: '30 pack of paper towels',
-//   initializer: 1,
-//   price: 7.50,
-//   complete: false,
-//   location: '944 Market St, San Francisco, CA 94121',
-//   num_of_participants: 2,
-//   created_dt:'2017-08-11 20:11:30'
-// }))
-// .then(() => Listing.create({
-//   name: '100 pack of protein bars',
-//   initializer: 2,
-//   price: 20.00,
-//   complete: false,
-//   location: '1015 Folsom St, San Francisco, CA 94103',
-//   num_of_participants: 4
-// }))
-// .then(() => Listing.create({
-//   name: '40 lbs of Weed',
-//   initializer: 3,
-//   price: 200.00,
-//   complete: false,
-//   location: '1552 11th Ave, San Francisco, CA 94103',
-//   num_of_participants: 3
-// }))
-
 
 
 exports.User = User;

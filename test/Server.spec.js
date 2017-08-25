@@ -8,14 +8,6 @@
 
 // chai.use(chaiHTTP);
 
-// // describe('server', () => {
-// //   describe('GET /', () => {
-// //     it('should get the index.html', (done) => {
-      
-// //     })
-//   })
-// })
-
 // describe('Create a new listing', function() {
 
 // })

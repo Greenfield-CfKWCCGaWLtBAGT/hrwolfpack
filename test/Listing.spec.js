@@ -5,20 +5,20 @@ import io from 'socket.io-client';
 let env = window.location.hostname + ':' + window.location.port;
 let socket = io(env);
 let listingInfo = {
-	arrived: false,
-	completed: true,
-	packed:	false,
-	description: "20 bottles of Herbal Essences shampoo 32oz",
-	id:	1,
-	image_url: "https://images-na.ssl-images-amazon.com/images/I/81BZskZAufL._SY355_.jpg",
-	initializer: 1,
-	lat: "37.78369240",
-	lng: "-122.40896659",
-	location: "944 Market St, San Francisco, CA 94121",
-	name:	"20 pack of shampoo",
-	num_of_participants: 3,
-	price: "5.00",
-	url: null
+  arrived: false,
+  completed: true,
+  packed:	false,
+  description: "20 bottles of Herbal Essences shampoo 32oz",
+  id:	1,
+  image_url: "https://images-na.ssl-images-amazon.com/images/I/81BZskZAufL._SY355_.jpg",
+  initializer: 1,
+  lat: "37.78369240",
+  lng: "-122.40896659",
+  location: "944 Market St, San Francisco, CA 94121",
+  name:	"20 pack of shampoo",
+  num_of_participants: 3,
+  price: "5.00",
+  url: null
 };
 
 describe('<Listing />', () => {
