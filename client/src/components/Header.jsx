@@ -42,7 +42,7 @@ var Header = (props) => (
 			</Nav>
 			<Nav pullRight>
 				<NavItem eventKey={1} href="#">
-					<Link to="/logout">Log Out</Link>
+					<a href='/logout'>Logout</a>
 				</NavItem>
 			</Nav>
 		</Navbar.Collapse>

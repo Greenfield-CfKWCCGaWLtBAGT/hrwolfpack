@@ -33,6 +33,7 @@ export default class ListingPage extends React.Component {
   }
 
   render() {
+    console.log('state: ', this.state);
     if (!this.state.listing) {
       return (
         <div> Loading... </div>
