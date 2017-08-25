@@ -9,9 +9,11 @@ var db_url;
 var db;
 
 
-if (env === 'test' || process.env.HEROKU_ENV) {
+if (env === 'test' || env === 'production') {
   db_url = process.env.DATABASE_URL
-  db = new Sequelize(db_url);
+  db = new Sequelize(db_url, {
+    dialect: 'mysql'
+  });
 } else {
   var creds = require('../config.js');
   db = new Sequelize(creds.db_name, creds.db_username, creds.db_password, {
