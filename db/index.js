@@ -7,10 +7,10 @@ var env = process.env.NODE_ENV || 'development';
 
 var db_url;
 var db;
-
+var cloud_db = 'postgres://jqahiwyjqaactz:83076ed0161f024949784ebfa535af464ed1700aad120329dfdaec813a8825d0@ec2-54-163-227-202.compute-1.amazonaws.com:5432/dakqlsj082mah5';
 
 if (env === 'test' || env === 'production') {
-  db_url = process.env.DATABASE_URL
+  db_url = cloud_db;
   db = new Sequelize(db_url, {
     dialect: 'mysql'
   });
