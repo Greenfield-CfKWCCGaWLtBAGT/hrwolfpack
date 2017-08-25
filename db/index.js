@@ -6,7 +6,7 @@ pg.defaults.ssl = true;
 
 var db_url;
 var db;
-if (process.env.DATABASE_URL) {
+if (process.env.TRAVIS_ENV || process.env.HEROKU_ENV) {
   db_url = process.env.DATABASE_URL
   db = new Sequelize(db_url);
 } else {
