@@ -26,9 +26,12 @@ export default class Chatroom extends React.Component {
   handleSend(message) {
     const messageObject = {
       user: this.props.userId,
-      message: message
-
+      username: this.props.username,
+      message: message,
+      listingInfo: this.props.listingInfo,
+      listingId: this.props.listingId
     }
+
     //emit message to server
     this.props.socket.emit('clientMessage', messageObject);
   }
