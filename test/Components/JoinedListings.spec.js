@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
 import { mount, shallow, render } from 'enzyme';

@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
 import { mount, shallow, render } from 'enzyme';
@@ -13,6 +13,6 @@ describe('<Deals /> component', () => {
 	it('accepts dealInfos props', () => {
 		const wrapper = shallow(<Deals dealInfos={dummyData.deals}/>);
 		expect(wrapper).to.have.descendants(Deal);
-	})
+	});
 
 })
