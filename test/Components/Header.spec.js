@@ -8,10 +8,9 @@ import Header from '../../client/src/components/Header.jsx';
 
 chai.use(chaiEnzyme());
 
-xdescribe('<Header /> component', () => {
+describe('<Header /> component', () => {
 	it('says hello to current user', () => {
 		const wrapper = shallow(<Header currentUser="Kanye West"/>);
-		console.log(wrapper);
-		expect(wrapper.find('#user-name')).to.have.html(<a id='user-name' href="#">Hello, Kanye West</a>);
+		expect(wrapper.find('#user-name')).to.contain(<a id='user-name' href="#">Hello, Kanye West</a>);
 	})
 })
