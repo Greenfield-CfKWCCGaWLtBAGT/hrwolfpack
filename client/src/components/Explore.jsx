@@ -41,6 +41,7 @@ class Explore extends React.Component {
 			query: this.state.value
 		})
 		.then(res => {
+			console.log(res);
 			this.setState({
 				deals: res.data
 			});
@@ -48,6 +49,7 @@ class Explore extends React.Component {
 		.catch(err => {
 			console.log('error', err);
 		});
+
 	}
 
 	handleSelect(dealInfo) {
