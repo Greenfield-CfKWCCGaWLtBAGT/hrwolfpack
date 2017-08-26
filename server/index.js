@@ -13,7 +13,7 @@ const db = require('../db');
 let app = express();
 //Use middleware
 // app.use(morgan('dev'));
-app.use(cookieParser());
+app.use(cookieParser('keyboard cat'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({secret: 'keyboard cat', resave: false,	saveUninitialized: false}));
