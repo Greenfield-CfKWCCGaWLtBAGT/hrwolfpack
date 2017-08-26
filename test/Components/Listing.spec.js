@@ -1,6 +1,9 @@
 import React from 'react';
-import Listing from '../client/src/components/Listing.jsx';
+import Listing from '../../client/src/components/Listing.jsx';
 import io from 'socket.io-client';
+import { expect } from 'chai';
+import { mount, shallow } from 'enzyme';
+import sinon from 'sinon';
 
 let env = window.location.hostname + ':' + window.location.port;
 let socket = io(env);
