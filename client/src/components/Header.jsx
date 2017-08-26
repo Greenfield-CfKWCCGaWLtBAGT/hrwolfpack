@@ -7,7 +7,7 @@ var Header = (props) => (
 		<Navbar inverse collapseOnSelect fixedTop>
 			<Navbar.Header>
 				<Navbar.Brand>
-					<a href="#">
+					<a id='user-name' href="#">
 						Hello, {props.currentUser}
 					</a>
 				</Navbar.Brand>
