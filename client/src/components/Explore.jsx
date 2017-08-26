@@ -1,16 +1,9 @@
 import React from 'react';
-import { FormGroup, FormControl, Button, Well, Jumbotron } from 'react-bootstrap';
+import { FormGroup, FormControl, Button, Well, Jumbotron, Grid, Row, } from 'react-bootstrap';
 import axios from 'axios';
 import Deal from './Deal.jsx';
 import Deals from './Deals.jsx';
 import CampaignModal from './CampaignModal.jsx';
-
-
-var divStyle = {
-  margin:'100px',
-  backgroundImage: "url('../../dist/images/wolfPack.png')"
-
-};
 
 class Explore extends React.Component {
 	constructor(props) {
@@ -73,14 +66,28 @@ class Explore extends React.Component {
 	}
 
 	render() {
+
+		let backgroundURL = 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiS16jZgPbVAhXH5lQKHd0lC80QjRwIBw&url=https%3A%2F%2Fwww.pinterest.com%2Fexplore%2Fcool-backgrounds%2F&psig=AFQjCNEr41HxzrZIdQfUZzlqOKUjhtcwwA&ust=1503874895465623';
+		var divStyle = {
+		  marginTop:'150px',
+		  marginLeft: '250px',
+		  marginRight: '250px',
+		  backgroundImage: "url(" + backgroundURL + ")",
+		  borderColor: 'grey',
+		  borderWidth: 0.5,
+		  borderRadius: 4
+		};
+
+
 		return (
 			<div style={divStyle}>
         <Jumbotron>
-          <h1>Welcome to the Pack!</h1>
-          <p>Search for deals near you!</p>
+          <h1 style={{'textAlign': 'center'}}>Welcome to the Pack!</h1>
           <div>
-				    <form onSubmit={this.handleSearch}>
-					    <Button bsStyle="primary" onClick={this.handleSearch}>Search</Button>
+	          <p style ={{'textAlign': 'center'}}>Search for deals near you.</p>
+					</div>
+          <div>
+				    <form style={{'margin': '20px'}}onSubmit={this.handleSearch}>
 					      <FormGroup>
 						      <FormControl
     							type="text"
@@ -89,6 +96,7 @@ class Explore extends React.Component {
     							onChange={this.handleChange}
 							    />
 					      </FormGroup>
+							<Button bsStyle="primary" block onClick={this.handleSearch}>Search</Button>
 				    </form>
           </div>
 				<CampaignModal

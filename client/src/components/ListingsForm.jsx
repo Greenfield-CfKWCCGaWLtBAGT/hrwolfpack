@@ -154,6 +154,19 @@ class Form extends React.Component {
           </InputGroup>
           <span style={errorStyle}>{this.state.formValidationErrors.price}</span>
         </FormGroup>
+        <FormGroup controlId="packSize" validationState={this.state.formValidationErrors.packSize.length > 0 ? "error" : null}>
+          <InputGroup id='packSize'>
+            <FormControl
+              type="number"
+              placeholder="How many more wolves do you want in your pack? (eg. 3, 2 or 8)"
+              name="packSize"
+              value={this.state.packSize}
+              onChange={this.onChange}
+              />
+            <InputGroup.Addon></InputGroup.Addon>
+          </InputGroup>
+          <span style={errorStyle}>{this.state.formValidationErrors.packSize}</span>
+        </FormGroup>
         <FormGroup controlId="pricePerWolf">
           <label
             className={'control-label'}
@@ -186,50 +199,12 @@ class Form extends React.Component {
           </InputGroup>
           <span style={errorStyle}>{this.state.formValidationErrors.location}</span>
         </FormGroup>
-        <FormGroup controlId="packSize" validationState={this.state.formValidationErrors.packSize.length > 0 ? "error" : null}>
-          <InputGroup id='packSize'>
-            <FormControl
-              type="number"
-              placeholder="How many more wolves do you want in your pack? (eg. 3, 2 or 8)"
-              name="packSize"
-              value={this.state.packSize}
-              onChange={this.onChange}
-              />
-            <InputGroup.Addon></InputGroup.Addon>
-          </InputGroup>
-          <span style={errorStyle}>{this.state.formValidationErrors.packSize}</span>
-        </FormGroup>
-        <FormGroup>
-          <InputGroup>
-            <FormControl
-              type="text"
-              placeholder="Link to Item"
-              name="url"
-              value={this.state.url}
-              onChange={this.onChange}
-              />
-            <InputGroup.Addon></InputGroup.Addon>
-          </InputGroup>
-        </FormGroup>
-        <FormGroup>
-          <InputGroup>
-            <FormControl
-              type="text"
-              placeholder="Item Image URL"
-              name="img_url"
-              value={this.state.img_url}
-              onChange={this.onChange}
-              />
-            <InputGroup.Addon></InputGroup.Addon>
-          </InputGroup>
-        </FormGroup>
         <FormGroup>
           <InputGroup>
             <FormControl
               type="text"
               placeholder="Description for your Campaign"
               name="description"
-              value={this.state.description}
               onChange={this.onChange}
               />
             <InputGroup.Addon></InputGroup.Addon>
