@@ -4,9 +4,9 @@ export default class Message extends React.Component {
   render() {
 
     return (
-      <div className={`message ${fromMe}`}>
+      <div>
         <div className='username'>
-          { this.props.username }
+          { this.props.user }
         </div>
         <div className='message-body'>
           { this.props.message }
