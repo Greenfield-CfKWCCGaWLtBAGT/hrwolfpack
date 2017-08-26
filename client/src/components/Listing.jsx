@@ -4,6 +4,8 @@ import $ from 'jquery';
 import { ListGroup, Button, Modal, Col, Thumbnail, Grid, Row, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Chatroom from './Chatroom.jsx';
+import MapContainer from './MapContainer.jsx';
+import Map from './Map.jsx';
 
 var boxStyle = {
   boxShadow: '3px 3px 5px 6px grey',
@@ -238,7 +240,12 @@ class Listing extends React.Component {
                         </Col>
                     </Row>
                     <Row>
-                        <div>MAP COMPONENT</div>
+                        <MapContainer
+                            currentListings={[this.props.listingInfo]}
+                            userId={this.props.userId}
+                            socket={this.props.socket}
+                            history={this.props.history}
+                        />
                     </Row>
                 </Grid>
 
