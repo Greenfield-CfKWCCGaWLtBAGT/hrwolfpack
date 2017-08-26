@@ -1,6 +1,6 @@
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let app = require('../server/index.js');
+let app = require('../../server/index.js');
 
 let request = require('supertest');
 let url = process.env.NODE_ENV || 'http://localhost:3000';
