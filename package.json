@@ -63,6 +63,7 @@
     "mocha": "^3.5.0",
     "react-addons-test-utils": "^15.6.0",
     "sinon": "^3.2.1",
+    "supertest": "^3.0.0",
     "webpack": "^3.4.1"
   },
   "babel": {
