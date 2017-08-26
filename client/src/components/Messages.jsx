@@ -11,7 +11,7 @@ export default class Messages extends React.Component {
         return (
           <Message
             key={index}
-            username={message.username}
+            user={message.user}
             message={message.message}
           />
         );

@@ -16,30 +16,30 @@ export default class Chatroom extends React.Component {
   }
 
   componentDidMount() {
-    //receive message from server and render to dom
-    this.props.socket.on('serverMessage', (message) => {
-      console.log(message);
+    this.props.socket.on('serverMessage', (data) => {
+      this.setState({
+        messages: this.state.messages.concat(data)
+      })
     });
   }
 
   handleSend(message) {
     const messageObject = {
-      // user:
-      // message: ''
+      user: this.props.userId,
+      message: message
 
     }
     //emit message to server
     this.props.socket.emit('clientMessage', messageObject);
   }
 
-  saveMessage() {
-    //append message to state
-    const messages = this.state.messages;
-    messages.push(message);
-    this.setState({ messages });
-    //save message to db
-
-  }
+  // saveMessage() {
+  //   //append message to state
+  //   const messages = this.state.messages;
+  //   messages.push(message);
+  //   this.setState({ messages });
+  //   //save message to db
+  // }
 
   render() {
     return (
