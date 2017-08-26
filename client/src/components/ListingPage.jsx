@@ -52,7 +52,7 @@ export default class ListingPage extends React.Component {
           </Row>
           <Row>
             <Col md={4}>
-            <Chatroom userId={this.props.userId} socket={this.props.socket}/>
+            <Chatroom userId={this.props.userId} username={this.props.username} listingInfo={this.state.listing} listingId={this.state.listingId} socket={this.props.socket}/>
             </Col>
           </Row>
         </Grid>

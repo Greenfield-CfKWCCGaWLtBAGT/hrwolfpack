@@ -21,6 +21,7 @@ var Main = (props) => (
     			<ListingPage
     				{...oldProps}
     				userId={props.userId}
+    				username={props.username}
     				socket={props.socket} />
     		)} />
 	      <Route exact path="/" render={(oldProps) => (

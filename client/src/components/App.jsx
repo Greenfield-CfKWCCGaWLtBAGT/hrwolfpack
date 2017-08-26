@@ -20,19 +20,22 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    let context = this;
     $.get('/user', (data) => {
-      this.setState({
+      context.setState({
         userId: data.id,
         currentUser: data.username
-      });
     });
+    console.log('APP USER: ', context.state.currentUser)
+      });
+
   }
 
   render() {
     return (
       <div>
         <Header currentUser={this.state.currentUser}/>
-        <Main userId={this.state.userId} socket={socket}/>
+        <Main userId={this.state.userId} username={this.state.currentUser} socket={socket}/>
       </div>
     );
   }
