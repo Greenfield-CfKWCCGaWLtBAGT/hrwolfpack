@@ -60,8 +60,6 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/messages', (req, res) => {
-	//use listing ID to get all messages from the db with corresponding ID 
-	console.log(req.query.listingId);
 	return db.Message.findAll({
 		where: {
 			listingId: req.query.listingId
@@ -69,8 +67,6 @@ app.get('/messages', (req, res) => {
 		raw: true
 	})
 	.then((messages) => {
-		console.log('db messages: ', messages);
-		//and send back to client
 		res.send(messages);
 	})
 	.catch((err) => {
@@ -92,7 +88,6 @@ io.on('connection', (socket) => {
 	console.log('Make socket connection', socket.id);
 
 	socket.on('clientMessage', (data) => {
-		//save message to database
 		return db.Message.create({
 		  userId: data.user,
 		  username: data.username,
@@ -101,7 +96,6 @@ io.on('connection', (socket) => {
 		  listing_name: data.listingInfo.name
 		})
 		.then((message) => {
-			//emit to all client sockets
 			io.sockets.emit('serverMessage', data);	
 		})
 		.catch((err) => {
