@@ -30,7 +30,6 @@ export default class ListingPage extends React.Component {
         })
       }
     });
-    console.log('USERID:', this.props.userId, this.props.socket, this.props.history)
   }
 
   render() {

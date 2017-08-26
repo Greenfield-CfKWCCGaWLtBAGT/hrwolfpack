@@ -5,12 +5,7 @@ export default class Message extends React.Component {
 
     return (
       <div>
-        <div className='username'>
-          { this.props.user }
-        </div>
-        <div className='message-body'>
-          { this.props.message }
-        </div>
+        { this.props.user }: { this.props.message }
       </div>
     );
   }

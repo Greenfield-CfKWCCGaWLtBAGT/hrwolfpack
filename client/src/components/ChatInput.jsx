@@ -27,7 +27,6 @@ export default class ChatInput extends React.Component {
     this.setState({
       chatInput: event.target.value
     })
-
   }
 
   render() {
