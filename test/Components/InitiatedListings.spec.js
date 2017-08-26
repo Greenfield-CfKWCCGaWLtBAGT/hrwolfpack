@@ -11,7 +11,7 @@ import chaiEnzyme from 'chai-enzyme';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 
-describe('InitiatedListings', () => {
+describe('<InitiatedListings /> component', () => {
   it ('renders Bootstrap components Button, Modal, FormGroup, Grid, and Row correctly', () => {
     const wrapper = shallow(<InitiatedListings />);
     expect(wrapper.containsAllMatchingElements([

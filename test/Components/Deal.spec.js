@@ -8,9 +8,9 @@ import chaiEnzyme from 'chai-enzyme';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 
-describe('Deal', () => {
+describe('<Deal /> component', () => {
+  const wrapper = mount(<Deal dealInfo={{description: 'lol'}} handleSelect={() => {}}/>);
   it ('can receive props', () => {
-    const wrapper = shallow(<Deal test={'props'}/>);
-    expect(wrapper.props().test).to.equal('props');
-  })
+    expect(wrapper.props().dealInfo.description).to.equal('lol');
+  });
 })

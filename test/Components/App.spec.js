@@ -17,5 +17,4 @@ describe('<App />', () => {
 			<Main />
 		])).to.equal(true);
 	});
-
 })

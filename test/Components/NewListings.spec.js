@@ -8,13 +8,4 @@ import chaiEnzyme from 'chai-enzyme';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 
-describe('<ListingsForm /> component', () => {
-  it ('calls componentDidMount', () => {
-    sinon.spy(Form.prototype, 'componentDidMount');
-    const wrapper = mount(<Form />);
-    expect(Form.prototype.componentDidMount.calledOnce).to.equal(true);
-  });
-  // it ('gets listing coordinates correctly', () => {
-
-  // })
-})
+// const promise = Promise.resolve()
