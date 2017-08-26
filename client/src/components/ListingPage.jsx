@@ -18,16 +18,15 @@ export default class ListingPage extends React.Component {
   }
 
   componentDidMount() {
-    let context = this;
     $.ajax({
       type: 'GET',
       data: {
-        id: context.state.listingId
+        id: this.state.listingId
       },
       url: '/listing',
-      success: (result) => {
-        context.setState({
-          listing: result[0]
+      success: (listing) => {
+        this.setState({
+          listing
         })
       }
     });
