@@ -59,6 +59,24 @@ app.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
+app.get('/messages', (req, res) => {
+	//use listing ID to get all messages from the db with corresponding ID 
+	console.log(req.query.listingId);
+	return db.Message.findAll({
+		where: {
+			listingId: req.query.listingId
+		},
+		raw: true
+	})
+	.then((messages) => {
+		console.log('db messages: ', messages);
+		//and send back to client
+		res.send(messages);
+	})
+	.catch((err) => {
+		console.log('Error: ', err);
+	})
+})
 
 app.use(router);
 
@@ -75,9 +93,20 @@ io.on('connection', (socket) => {
 
 	socket.on('clientMessage', (data) => {
 		//save message to database
-
-		//emit to all client sockets
-		io.sockets.emit('serverMessage', data);
+		return db.Message.create({
+		  userId: data.user,
+		  username: data.username,
+		  message: data.message,
+		  listingId: data.listingInfo.id,
+		  listing_name: data.listingInfo.name
+		})
+		.then((message) => {
+			//emit to all client sockets
+			io.sockets.emit('serverMessage', data);	
+		})
+		.catch((err) => {
+			console.log('Error: ', err);
+		})
 
 	});
 

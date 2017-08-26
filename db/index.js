@@ -74,9 +74,11 @@ Listing.belongsToMany(User, { through: UserListings});
 
 var Message = db.define('messages', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-  UserId: Sequelize.INTEGER,
-  text: Sequelize.TEXT,
-  listingId: Sequelize.INTEGER
+  userId: Sequelize.INTEGER,
+  username: Sequelize.TEXT,
+  message: Sequelize.TEXT,
+  listingId: Sequelize.INTEGER,
+  listing_name: Sequelize.TEXT
 })
 //create Users and listings table
 

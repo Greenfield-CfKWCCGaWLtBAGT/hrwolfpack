@@ -3,6 +3,7 @@
 import React from 'react';
 import Messages from './Messages.jsx';
 import ChatInput from './ChatInput.jsx';
+import axios from 'axios';
 
 
 export default class Chatroom extends React.Component {
@@ -13,6 +14,23 @@ export default class Chatroom extends React.Component {
     }
 
     this.handleSend = this.handleSend.bind(this);
+  }
+
+  componentWillMount() {
+    //curent messages for current listing page
+    axios.get('/messages', {
+      params: {
+        listingId: this.props.listingId
+      }
+    })
+      .then((messages) => {
+        this.setState({
+          messages: messages.data
+        })
+      })
+      .catch((err) => {
+        console.log('Error: ', err);
+      })
   }
 
   componentDidMount() {
