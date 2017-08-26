@@ -46,7 +46,6 @@ class NewListings extends React.Component {
 
   getNewListings() {
     $.get('/newListings', (data) => {
-      console.log(data);
       this.setState({
         currentListings: data
       });

@@ -71,6 +71,15 @@ var UserListings = db.define('userListings', {
 
 User.belongsToMany(Listing, { through: UserListings});
 Listing.belongsToMany(User, { through: UserListings});
+
+var Message = db.define('messages', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  userId: Sequelize.INTEGER,
+  username: Sequelize.TEXT,
+  message: Sequelize.TEXT,
+  listingId: Sequelize.INTEGER,
+  listing_name: Sequelize.TEXT
+})
 //create Users and listings table
 
 User.sync()
@@ -79,9 +88,13 @@ User.sync()
 })
 .then(() => {
   return UserListings.sync();
-});
+})
+.then(() => {
+  return Message.sync();
+})
 
 
 exports.User = User;
 exports.Listing = Listing;
 exports.UserListings = UserListings;
+exports.Message = Message;

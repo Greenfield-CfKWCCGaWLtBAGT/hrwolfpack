@@ -36,7 +36,6 @@ router.get('/listing', (req, res) => {
 		where: {id: req.query.id}
 	})
 	.then(results => {
-		console.log('great success! ', results[0].dataValues);
 		res.send(results[0].dataValues);
 	})
 	.catch(err => {
