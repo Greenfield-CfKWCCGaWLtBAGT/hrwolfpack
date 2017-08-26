@@ -1,4 +1,6 @@
 import React from 'react';
+//use this if need to test around a link
+import { MemoryRouter } from 'react-router';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import chai from 'chai';

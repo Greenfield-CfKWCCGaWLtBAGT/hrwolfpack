@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
+import { MemoryRouter } from 'react-router';
 
 let env = window.location.hostname + ':' + window.location.port;
 let socket = io(env);
@@ -25,10 +26,11 @@ let listingInfo = {
 };
 
 describe('<Listing />', () => {
-  xit('calls componentDidMount', () => {
-  	spy(Listing.prototype, 'componentDidMount');
-  	const wrapper = mount(<Listing listingInfo={listingInfo} socket={socket}/>);
-    expect(Listing.prototype.componentDidMount.calledOnce).to.equal(true);
+  it('calls componentDidMount', () => {
+  	sinon.spy(Listing.prototype, 'componentDidMount');
+  	const wrapper = mount(<MemoryRouter><Listing listingInfo={listingInfo} socket={socket}/></MemoryRouter>);
+    expect(Listing.prototype.componentDidMount).to.have.property('callCount', 1);
+    Listing.prototype.componentDidMount.restore();
   });
 
   it('can receive listingInfo props', () => {
