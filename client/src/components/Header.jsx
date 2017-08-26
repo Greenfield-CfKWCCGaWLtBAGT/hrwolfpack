@@ -3,11 +3,11 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 var Header = (props) => (
-	<div>
+	<div className="navbar">
 		<Navbar inverse collapseOnSelect fixedTop>
 			<Navbar.Header>
 				<Navbar.Brand>
-					<a href="#">
+					<a id='user-name' href="#">
 						Hello, {props.currentUser}
 					</a>
 				</Navbar.Brand>
