@@ -2,6 +2,7 @@ import React from 'react';
 import { ListGroup, Button, Modal, Col, Thumbnail, Grid, Row, Panel } from 'react-bootstrap';
 import $ from 'jquery';
 import Listing from './Listing.jsx';
+import Chatroom from './Chatroom.jsx';
 
 var divStyle = {
   margin: '100px 50px 50px 50px'
@@ -17,16 +18,15 @@ export default class ListingPage extends React.Component {
   }
 
   componentDidMount() {
-    let context = this;
     $.ajax({
       type: 'GET',
       data: {
-        id: context.state.listingId
+        id: this.state.listingId
       },
       url: '/listing',
-      success: (result) => {
-        context.setState({
-          listing: result
+      success: (listing) => {
+        this.setState({
+          listing
         })
       }
     });
@@ -41,12 +41,19 @@ export default class ListingPage extends React.Component {
       return (
         <Grid>
           <Row>
+            <Col md={8}>
             <Listing
               listingInfo={this.state.listing}
               userId={this.props.userId}
               socket={this.props.socket}
               history={this.props.history}
             />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={4}>
+            <Chatroom userId={this.props.userId} socket={this.props.socket}/>
+            </Col>
           </Row>
         </Grid>
       )

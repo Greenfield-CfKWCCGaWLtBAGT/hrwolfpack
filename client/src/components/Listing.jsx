@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { ListGroup, Button, Modal, Col, Thumbnail, Grid, Row, Panel,  } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; 
+import { ListGroup, Button, Modal, Col, Thumbnail, Grid, Row, Panel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 var boxStyle = {
   boxShadow: '3px 3px 5px 6px grey',

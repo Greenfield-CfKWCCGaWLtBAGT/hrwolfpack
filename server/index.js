@@ -13,7 +13,7 @@ const db = require('../db');
 let app = express();
 //Use middleware
 // app.use(morgan('dev'));
-app.use(cookieParser());
+app.use(cookieParser('keyboard cat'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({secret: 'keyboard cat', resave: false,	saveUninitialized: false}));
@@ -72,6 +72,14 @@ var io = socket(server, {secure: true});
 
 io.on('connection', (socket) => {
 	console.log('Make socket connection', socket.id);
+
+	socket.on('clientMessage', (data) => {
+		//save message to database
+
+		//emit to all client sockets
+		io.sockets.emit('serverMessage', data);
+
+	});
 
 	socket.on('newListing', (data) => {
 		db.Listing.create({
