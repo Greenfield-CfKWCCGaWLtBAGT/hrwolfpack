@@ -37,6 +37,7 @@ export default class UserListings extends React.Component {
           history={this.props.history}
           currentListings={this.state.allListings}
           userId={this.props.userId}
+          username={this.props.username}
           socket={this.props.socket}
         />
       </div>

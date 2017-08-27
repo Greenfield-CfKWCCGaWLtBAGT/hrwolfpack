@@ -15,6 +15,7 @@ var Main = (props) => (
 	      	<UserListings
 	      		{...oldProps}
 	      		userId={props.userId}
+	      		username={props.username}
 	      		socket={props.socket} />
 	      )}/>
     		<Route path='/userlistings/:id' render={(oldProps) => (
@@ -28,30 +29,35 @@ var Main = (props) => (
 	        <Explore
 	        {...oldProps}
 	        userId={props.userId}
+	        username={props.username}
 	        socket={props.socket}/>
 	      )}/>
 	      <Route exact path="/new" render={(oldProps) => (
 	        <NewListings
 	        {...oldProps}
 	        userId={props.userId}
+	        username={props.username}
 	        socket={props.socket}/>
 	      )}/>
 	      <Route exact path="/joined" render={(oldProps) => (
 	        <JoinedListings
 	        {...oldProps}
 	        userId={props.userId}
+	        username={props.username}
 	        socket={props.socket}/>
 	      )}/>
 	      <Route exact path="/initiated" render={(oldProps) => (
 	        <InitiatedListings
 	        {...oldProps}
 	        userId={props.userId}
+	        username={props.username}
 	        socket={props.socket}/>
 	      )}/>
 				<Route exact path="/testimonials" render={(oldProps) => (
 					<Testimonials
 						{...oldProps}
 						userId={props.userId}
+						username={props.username}
 						socket={props.socket}/>
 				)}/>
 	    </Switch>
