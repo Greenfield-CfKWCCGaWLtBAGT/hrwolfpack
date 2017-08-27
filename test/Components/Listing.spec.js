@@ -25,7 +25,7 @@ let listingInfo = {
   url: null
 };
 
-describe('<Listing />', () => {
+describe('<Listing /> component', () => {
   it('calls componentDidMount', () => {
   	sinon.spy(Listing.prototype, 'componentDidMount');
   	const wrapper = mount(<MemoryRouter><Listing listingInfo={listingInfo} socket={socket}/></MemoryRouter>);
