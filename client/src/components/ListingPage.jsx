@@ -26,7 +26,7 @@ export default class ListingPage extends React.Component {
       url: '/listing',
       success: (listing) => {
         this.setState({
-          listing
+          listing: listing
         })
       }
     });
