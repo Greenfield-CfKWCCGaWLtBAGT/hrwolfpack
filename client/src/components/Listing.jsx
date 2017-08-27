@@ -247,14 +247,6 @@ class Listing extends React.Component {
                             history={this.props.history}
                         />
                     </Row>
-                    <Row>
-                    </Row>
-                    <Row>
-                    </Row>
-                    <Row>
-                    </Row>
-                    <Row>
-                    </Row>
                 </div>
 
 
