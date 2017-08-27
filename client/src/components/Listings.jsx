@@ -15,6 +15,7 @@ class Listings extends React.Component {
 							return <Listing
 								listingInfo={listingInfo}
 								key={i}
+								username={this.props.username}
 								userId={this.props.userId}
 								socket={this.props.socket}
 								history={this.props.history}/>

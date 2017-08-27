@@ -45,6 +45,7 @@ export default class ListingPage extends React.Component {
             <Listing
               listingInfo={this.state.listing}
               userId={this.props.userId}
+              username={this.props.username}
               socket={this.props.socket}
               history={this.props.history}
             />

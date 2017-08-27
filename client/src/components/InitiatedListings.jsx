@@ -85,6 +85,7 @@ class InitiatedListings extends React.Component {
         <Listings
         currentListings={this.state.currentListings}
         userId={this.props.userId}
+        username={this.props.username}
         socket={this.props.socket}/>
       </div>
     )
