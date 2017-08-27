@@ -213,14 +213,14 @@ class Listing extends React.Component {
       }
 
       return (
-        <div>
+        <div className="karunsucks" style={{height: '100%'}}>
 
           <Modal show={this.state.lgShow} bsSize="large" aria-labelledby="contained-modal-title-sm" onKeyDown={this.handleKeyDown}>
             <Modal.Header >
               <Modal.Title id="contained-modal-title-sm"><div>{this.props.listingInfo.name}</div></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Grid>
+                <div>
                     <Row>
                         <Col md={5}>
                           <ul>
@@ -247,7 +247,15 @@ class Listing extends React.Component {
                             history={this.props.history}
                         />
                     </Row>
-                </Grid>
+                    <Row>
+                    </Row>
+                    <Row>
+                    </Row>
+                    <Row>
+                    </Row>
+                    <Row>
+                    </Row>
+                </div>
 
 
             </Modal.Body>

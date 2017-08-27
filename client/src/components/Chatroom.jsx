@@ -56,7 +56,7 @@ export default class Chatroom extends React.Component {
 
   render() {
     return (
-        <div className="container">
+        <div className="">
         <h3>Ferret Business Chat</h3>
         <Messages messages={this.state.messages} />
         <ChatInput onSend={this.handleSend} />
