@@ -11,6 +11,7 @@ let expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Server Index', () => {
+
   describe('Login Page', () => {
     it('should respond with a server code 200', (done) => {
       chai.request(app)
@@ -48,6 +49,7 @@ describe('Server Index', () => {
     });
 
   });
+
   describe('Signup Page', () => {
     it('should respond with a server code 200', (done) => {
       chai.request(app)
@@ -75,6 +77,7 @@ describe('Server Index', () => {
         })
     });
   });
+
   describe('Logout Page', () => {
     it('should respond with a server code 200', (done) => {
       chai.request(app)
@@ -93,5 +96,71 @@ describe('Server Index', () => {
         });
     });
   });
+
+  describe('GET /messages', () => {
+    it('should respond with an array of messages from the database', () => {
+      server.get('messages', () => {
+        chai.request(app)
+          .get('/messages')
+          .then((res) => {
+            console.log(res);
+            expect(res).to.have.status(200);
+            expect(res).to.be.an.instanceOf(Array);
+            expect(res[0]).to.have.property('message');
+            expect(res[0]).to.have.property('username');
+            expect(res[0]).to.have.property('listing_name');
+          })
+          .catch((err) => {
+            console.log('Error: ', err);
+          })
+      })
+    })
+  })
   
 })
+
+describe('Routes.js', () => {
+  describe('GET /listings', () => {
+    it('should respond with an array of messages from the database', () => {
+      server.get('listings', () => {
+        chai.request(app)
+          .get('/listings')
+          .then((res) => {
+            expect(res).to.have.status(200);
+            expect(res).to.be.an.instanceOf(Array);
+            expect(res[0]).to.have.property('price');
+            expect(res[0]).to.have.property('name');
+            expect(res[0]).to.have.property('location');
+          })
+          .catch((err) => {
+            console.log('Error: ', err);
+          })
+      })
+    })
+  })
+
+  xdescribe('GET /user', () => {
+
+  });
+
+  xdescribe('POST /listingStatus', () => {
+
+  });
+
+  xdescribe('GET /listing', () => {
+
+  });
+
+  xdescribe('GET /newListings', () => {
+
+  });
+
+  xdescribe('GET /joinedListings', () => {
+
+  });
+
+  xdescribe('GET /initiatedListings', () => {
+
+  });
+
+});

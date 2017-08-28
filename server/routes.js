@@ -7,6 +7,7 @@ const amazonApiHandler = require('./amazon.js');
 router.get('/listings', (req, res) => {
 	db.Listing.findAll()
 		.then(results => {
+			console.log(results);
 			res.send(results);
 		})
 		.catch(err => {
