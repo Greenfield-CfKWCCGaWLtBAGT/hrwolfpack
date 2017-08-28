@@ -236,7 +236,7 @@ class Listing extends React.Component {
                       	 </ul>
                         </Col>
                         <Col md={7}>
-                            <Chatroom userId={this.props.userId} username={this.props.username} listingInfo={this.props.listingInfo} listingId={this.props.listingId} socket={this.props.socket}/>
+                            <Chatroom userId={this.props.userId} username={this.props.username} listingInfo={this.props.listingInfo} listingId={this.props.listingInfo.id} socket={this.props.socket}/>
                         </Col>
                     </Row>
                     <Row>
