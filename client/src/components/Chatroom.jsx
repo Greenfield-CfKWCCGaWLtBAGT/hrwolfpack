@@ -21,7 +21,7 @@ export default class Chatroom extends React.Component {
     //curent messages for current listing page
     axios.get('/messages', {
       params: {
-        listingId: this.props.listingInfo.id
+        listingId: this.props.listingId
       }
     })
       .then((messages) => {

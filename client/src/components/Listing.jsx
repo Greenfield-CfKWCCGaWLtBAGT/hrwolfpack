@@ -263,10 +263,8 @@ class Listing extends React.Component {
                   <p><strong style={{fontSize: '1.4em', fontWeight: 'bold'}}>You pay</strong> <span style={{fontSize: '1.4em', fontWeight: 'bold', color: 'green'}}>${((this.props.listingInfo.price / (Number(this.props.listingInfo.num_of_participants) + 1) )).toFixed(2)}
                   </span></p>
                   <div>
-                    <Button bsStyle="primary" onClick={this.showModal}>More Info</Button>
-                    <Link to={`/userlistings/${this.props.listingInfo.id}`}>
-                        <Button bsStyle="primary">Listing Page</Button>
-                    </Link>
+                    <Button bsStyle="primary" onClick={this.showModal}>Details</Button>
+
                     <p style={{fontStyle: 'italic', color: 'grey'}}>{footer}</p>
                   </div>
                 </Thumbnail>
