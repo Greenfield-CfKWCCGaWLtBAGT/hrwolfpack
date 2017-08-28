@@ -5,7 +5,7 @@ export default class Message extends React.Component {
 
     return (
       <div>
-        { this.props.username }: { this.props.message }
+        <strong>{ this.props.username }</strong>: { this.props.message }
       </div>
     );
   }

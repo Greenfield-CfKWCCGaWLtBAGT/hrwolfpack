@@ -4,6 +4,7 @@ import React from 'react';
 import Messages from './Messages.jsx';
 import ChatInput from './ChatInput.jsx';
 import axios from 'axios';
+import {Panel} from 'react-bootstrap';
 
 
 export default class Chatroom extends React.Component {
@@ -20,10 +21,11 @@ export default class Chatroom extends React.Component {
     //curent messages for current listing page
     axios.get('/messages', {
       params: {
-        listingId: this.props.listingId
+        listingId: this.props.listingInfo.id
       }
     })
       .then((messages) => {
+        console.log('CHATROOM DATA: ', messages.data)
         this.setState({
           messages: messages.data
         })
@@ -56,13 +58,11 @@ export default class Chatroom extends React.Component {
 
   render() {
     return (
-        <div className="">
-        <h3>Ferret Business Chat</h3>
+        <Panel header={<h3>Buyer Chat</h3>} bsStyle="primary">
         <Messages messages={this.state.messages} />
         <ChatInput onSend={this.handleSend} />
-      </div>
+        </Panel>
     )
-
   }
 
 };

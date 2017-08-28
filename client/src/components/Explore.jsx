@@ -82,17 +82,14 @@ class Explore extends React.Component {
 		return (
 			<div style={divStyle}>
         <Jumbotron>
-          <h1 style={{'textAlign': 'center'}}>Welcome to the Pack!</h1>
-          <div>
-	          <p style ={{'textAlign': 'center'}}>Search for deals near you.</p>
-					</div>
+          <h1 style={{'textAlign': 'center'}}>Join the Ferret Bizness!</h1>
           <div>
 				    <form style={{'margin': '20px'}}onSubmit={this.handleSearch}>
 					      <FormGroup>
 						      <FormControl
     							type="text"
     							value={this.state.value}
-    							placeholder="Search for deals around the web"
+    							placeholder="Search for deals around the web..."
     							onChange={this.handleChange}
 							    />
 					      </FormGroup>
