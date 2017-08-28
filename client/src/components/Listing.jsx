@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { ListGroup, Button, Modal, Col, Thumbnail, Grid, Row, Panel } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button, Modal, Col, Thumbnail, Grid, Row, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Chatroom from './Chatroom.jsx';
 import MapContainer from './MapContainer.jsx';
@@ -222,20 +222,20 @@ class Listing extends React.Component {
             <Modal.Body>
                 <div>
                     <Row>
-                        <Col md={5}>
-                          <ul>
-                              <li>Listing ID: {this.props.listingInfo.id}</li>
-                              <li>Description: {this.props.listingInfo.description}</li>
-                                <li>Purchaser: {this.props.listingInfo.initializer}</li>
-                                <li>Price: {this.props.listingInfo.price}</li>
-                                <li>Pickup Location: {this.props.listingInfo.location}</li>
-                                <li>Required Number of Buyers: {this.props.listingInfo.num_of_participants}</li>
-                              <li>Number of Buyers Joined: {this.state.listingParticipants.length}</li>
-                              <li>Number of Buyers Who Have Picked Up Product: {this.state.receivedParticipants.length}</li>
-                              <li>Buy Here: <a href={this.props.listingInfo.url} target="_blank">{this.props.listingInfo.name}</a></li>
-                      	 </ul>
+                        <Col md={6}>
+                        <ListGroup>
+                            <ListGroupItem><strong>Listing ID</strong>: {this.props.listingInfo.id}</ListGroupItem>
+                            <ListGroupItem><strong>Description</strong>: {this.props.listingInfo.description}</ListGroupItem>
+                            <ListGroupItem><strong>Purchaser</strong>: {this.props.listingInfo.initializer}</ListGroupItem>
+                            <ListGroupItem><strong>Price</strong>: {this.props.listingInfo.price}</ListGroupItem>
+                            <ListGroupItem><strong>Pickup Location</strong>: {this.props.listingInfo.location}</ListGroupItem>
+                            <ListGroupItem><strong>Required Number of Buyers</strong>: {this.props.listingInfo.num_of_participants}</ListGroupItem>
+                            <ListGroupItem><strong>Number of Buyers Joined</strong>: {this.state.listingParticipants.length}</ListGroupItem>
+                            <ListGroupItem><strong>Number of Buyers Who Have Picked Up Product</strong>: {this.state.receivedParticipants.length}</ListGroupItem>
+                            <ListGroupItem><strong>Buy Here</strong>: <a href={this.props.listingInfo.url} target="_blank">{this.props.listingInfo.name}</a></ListGroupItem>
+                        </ListGroup>
                         </Col>
-                        <Col md={7}>
+                        <Col md={6}>
                             <Chatroom userId={this.props.userId} username={this.props.username} listingInfo={this.props.listingInfo} listingId={this.props.listingInfo.id} socket={this.props.socket}/>
                         </Col>
                     </Row>
@@ -257,16 +257,14 @@ class Listing extends React.Component {
             </Modal.Footer>
           </Modal>
             <Col xs={6} md={4} >
-                <Thumbnail src={this.props.listingInfo.image_url}alt="220x150" style={boxStyle}>
+                <Thumbnail src={this.props.listingInfo.image_url}alt="220x150">
                   <h3>{this.props.listingInfo.name}</h3>
                   <p>Original Bulk Price: <span style={{fontSize: '1.1em', fontWeight: 'bold', color: '#B12704'}}>${this.props.listingInfo.price}</span></p>
                   <p><strong style={{fontSize: '1.4em', fontWeight: 'bold'}}>You pay</strong> <span style={{fontSize: '1.4em', fontWeight: 'bold', color: 'green'}}>${((this.props.listingInfo.price / (Number(this.props.listingInfo.num_of_participants) + 1) )).toFixed(2)}
                   </span></p>
                   <div>
-                    <Button bsStyle="primary" onClick={this.showModal}>More Info</Button>
-                    <Link to={`/userlistings/${this.props.listingInfo.id}`}>
-                        <Button bsStyle="primary">Listing Page</Button>
-                    </Link>
+                    <Button bsStyle="primary" onClick={this.showModal}>Details</Button>
+
                     <p style={{fontStyle: 'italic', color: 'grey'}}>{footer}</p>
                   </div>
                 </Thumbnail>

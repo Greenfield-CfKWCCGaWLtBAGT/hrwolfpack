@@ -41,7 +41,7 @@ export default class ListingPage extends React.Component {
       return (
         <Grid>
           <Row>
-            <Col md={8}>
+            <Col md={6}>
             <Listing
               listingInfo={this.state.listing}
               userId={this.props.userId}
@@ -50,15 +50,14 @@ export default class ListingPage extends React.Component {
               history={this.props.history}
             />
             </Col>
-          </Row>
-          <Row>
-            <Col md={4}>
+            <Col md={6}>
             <Chatroom userId={this.props.userId} username={this.props.username} listingInfo={this.state.listing} listingId={this.state.listingId} socket={this.props.socket}/>
             </Col>
           </Row>
         </Grid>
       )
     }
+    <Chatroom userId={this.props.userId} username={this.props.username} listingInfo={this.props.listingInfo} listingId={this.props.listingId} socket={this.props.socket}/>
 
   }
 

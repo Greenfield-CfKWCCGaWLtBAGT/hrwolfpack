@@ -16,27 +16,18 @@ var Header = (props) => (
 			<Navbar.Collapse>
 				<Nav>
 					<NavItem>
-						<Link to="/">Explore</Link>
+						<Link to="/">Create Listing</Link>
 					</NavItem>
 
 					<NavItem>
-						<Link to="/new">New Listings Near You</Link>
+						<Link to="/new">New Listings Near Me</Link>
 					</NavItem>
-
 					<NavItem eventKey={2} href="#">
-						<Link to="/joined">Listings You Joined</Link>
-					</NavItem>
-
-					<NavItem eventKey={2} href="#">
-						<Link to="/initiated">Listings You Initiated</Link>
-					</NavItem>
-
-					<NavItem eventKey={2} href="#">
-						<Link to="/userlistings">All Your Listings</Link>
+						<Link to="/userlistings">My Listings</Link>
 					</NavItem>
 
 					<NavItem>
-						<Link to="/testimonials">Reviews</Link>
+						<Link to="/testimonials">Testimonials</Link>
 					</NavItem>
 
 			</Nav>
